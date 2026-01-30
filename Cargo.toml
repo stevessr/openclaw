@@ -3,13 +3,14 @@ members = [
     "crates/openclaw-core",
     "crates/openclaw-cli",
     "crates/openclaw-gateway",
+    "crates/openclaw-ffi",
 ]
 resolver = "2"
 
 [workspace.package]
 version = "2026.1.29"
 edition = "2021"
-rust-version = "1.75"
+rust-version = "1.77"
 authors = ["OpenClaw Contributors"]
 license = "MIT"
 repository = "https://github.com/openclaw/openclaw"

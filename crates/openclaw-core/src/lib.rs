@@ -4,6 +4,7 @@
 /// used across the OpenClaw ecosystem.
 pub mod config;
 pub mod error;
+pub mod session;
 pub mod types;
 
 pub use error::{Error, Result};

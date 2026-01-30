@@ -1,0 +1,25 @@
+[package]
+name = "openclaw-ffi"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+openclaw-core = { path = "../openclaw-core" }
+
+serde.workspace = true
+serde_json.workspace = true
+anyhow.workspace = true
+
+# FFI dependencies
+napi = { version = "2.16", default-features = false, features = ["napi8", "async"] }
+napi-derive = "2.16"
+
+[build-dependencies]
+napi-build = "2.1"

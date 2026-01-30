@@ -4,13 +4,14 @@ This document outlines the migration of OpenClaw from TypeScript to Rust.
 
 ## Status
 
-**Current Phase:** Phase 1 - Foundation & Setup ✅
+**Current Phase:** Phase 2 - Core Library Migration (In Progress)
 
 The Rust workspace has been established with the following crates:
 
-- **openclaw-core**: Core types, error handling, and configuration
+- **openclaw-core**: Core types, error handling, configuration, and session management
 - **openclaw-gateway**: Gateway server implementation
 - **openclaw-cli**: Command-line interface
+- **openclaw-ffi**: Node.js FFI bridge for TypeScript plugin compatibility
 
 ## Architecture
 
@@ -19,6 +20,9 @@ The Rust workspace has been established with the following crates:
 ```
 openclaw/
 ├── Cargo.toml                 # Workspace configuration
+├── docs/
+│   └── rust/
+│       └── 部署指南.md         # Chinese deployment guide
 └── crates/
     ├── openclaw-core/         # Core library
     │   ├── Cargo.toml
@@ -26,15 +30,22 @@ openclaw/
     │       ├── lib.rs
     │       ├── config.rs      # Configuration management
     │       ├── error.rs       # Error types
-    │       └── types.rs       # Core data types
+    │       ├── types.rs       # Core data types
+    │       └── session.rs     # Session management
     ├── openclaw-gateway/      # Gateway server
     │   ├── Cargo.toml
     │   └── src/
     │       └── lib.rs         # HTTP/WebSocket server
-    └── openclaw-cli/          # CLI binary
+    ├── openclaw-cli/          # CLI binary
+    │   ├── Cargo.toml
+    │   └── src/
+    │       └── main.rs        # CLI commands
+    └── openclaw-ffi/          # Node.js FFI bridge
         ├── Cargo.toml
+        ├── package.json       # NPM package
+        ├── index.d.ts         # TypeScript definitions
         └── src/
-            └── main.rs        # CLI commands
+            └── lib.rs         # NAPI bindings
 ```
 
 ## Building
@@ -92,9 +103,10 @@ The Rust codebase is designed to coexist with the TypeScript codebase during mig
 
 During the transition phase:
 
-- Both TypeScript and Rust implementations will be available
+- Both TypeScript and Rust implementations are available
+- **FFI Bridge**: Node.js NAPI bindings (`openclaw-ffi`) enable TypeScript plugins to call Rust code
 - Rust binary can be used for performance-critical operations
-- TypeScript implementation remains the default until Rust migration is complete
+- TypeScript plugins remain fully compatible through the FFI layer
 
 ### Phase Roadmap
 
@@ -105,9 +117,11 @@ During the transition phase:
   - [x] Basic CLI framework
   - [x] Gateway server skeleton
 
-- [ ] **Phase 2**: Core Library Migration
+- [x] **Phase 2**: Core Library Migration (In Progress)
+  - [x] Session management infrastructure
+  - [x] FFI bridge for TypeScript compatibility
+  - [x] Chinese deployment guide (docs/rust/部署指南.md)
   - [ ] Message serialization/deserialization
-  - [ ] Session management
   - [ ] Logging infrastructure
   - [ ] Utility functions
 
