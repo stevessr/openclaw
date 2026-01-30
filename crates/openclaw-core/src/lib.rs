@@ -6,5 +6,6 @@ pub mod config;
 pub mod error;
 pub mod session;
 pub mod types;
+pub mod utils;
 
 pub use error::{Error, Result};

@@ -40,6 +40,9 @@ clap = { version = "4.4", features = ["derive"] }
 config = "0.14"
 toml = "0.8"
 
+# Date/time
+chrono = { version = "0.4", features = ["serde"] }
+
 [profile.release]
 opt-level = 3
 lto = true
