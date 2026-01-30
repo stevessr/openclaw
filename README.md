@@ -99,6 +99,22 @@ pnpm gateway:watch
 
 Note: `pnpm openclaw ...` runs TypeScript directly (via `tsx`). `pnpm build` produces `dist/` for running via Node / the packaged `openclaw` binary.
 
+## Rust Implementation (Experimental)
+
+OpenClaw is being migrated to Rust for improved performance and reliability. The Rust implementation is in early development.
+
+```bash
+# Build the Rust binary
+cargo build --release
+
+# Run the Rust CLI
+./target/release/openclaw --version
+./target/release/openclaw gateway --host 127.0.0.1 --port 18789
+```
+
+See [RUST_MIGRATION.md](RUST_MIGRATION.md) for detailed information about the Rust migration.
+
+
 ## Security defaults (DM access)
 
 OpenClaw connects to real messaging surfaces. Treat inbound DMs as **untrusted input**.
