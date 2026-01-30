@@ -121,9 +121,9 @@ During the transition phase:
   - [x] Session management infrastructure
   - [x] FFI bridge for TypeScript compatibility
   - [x] Chinese deployment guide (docs/rust/部署指南.md)
-  - [ ] Message serialization/deserialization
-  - [ ] Logging infrastructure
-  - [ ] Utility functions
+  - [x] Message serialization/deserialization
+  - [x] Logging infrastructure
+  - [x] Utility functions
 
 - [ ] **Phase 3**: Gateway & Networking
   - [ ] WebSocket protocol implementation

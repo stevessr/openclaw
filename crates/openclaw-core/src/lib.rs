@@ -4,6 +4,8 @@
 /// used across the OpenClaw ecosystem.
 pub mod config;
 pub mod error;
+pub mod logging;
+pub mod serialization;
 pub mod session;
 pub mod types;
 pub mod utils;
