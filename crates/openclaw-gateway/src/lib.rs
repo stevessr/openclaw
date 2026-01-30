@@ -2,7 +2,6 @@
 ///
 /// This crate provides the gateway server implementation that handles
 /// communication between channels, agents, and the AI backend.
-
 use axum::{
     extract::State,
     http::StatusCode,
@@ -39,9 +38,7 @@ pub async fn run(host: String, port: u16) -> Result<()> {
         .map_err(|e| Error::Network(format!("Failed to bind to {}: {}", addr, e)))?;
 
     info!("Gateway listening on {}", addr);
-    axum::serve(listener, app)
-        .await
-        .map_err(|e| Error::Network(format!("Server error: {}", e)))?;
+    axum::serve(listener, app).await.map_err(|e| Error::Network(format!("Server error: {}", e)))?;
 
     Ok(())
 }
@@ -82,7 +79,7 @@ async fn send_message(
     Json(payload): Json<MessageRequest>,
 ) -> impl IntoResponse {
     info!("Sending message to {}: {}", payload.to, payload.message);
-    
+
     // TODO: Implement actual message sending
     (
         StatusCode::OK,
@@ -100,7 +97,6 @@ mod tests {
     #[tokio::test]
     async fn test_health_endpoint() {
         let _response = health().await;
-        // Basic test to ensure health endpoint compiles
-        assert!(true);
+        // Basic test to ensure health endpoint compiles and returns successfully
     }
 }

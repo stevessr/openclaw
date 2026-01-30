@@ -3,26 +3,19 @@ use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
 /// Main configuration structure
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct Config {
     /// Gateway configuration
+    #[serde(default)]
     pub gateway: GatewayConfig,
-    
-    /// Model configuration
-    pub models: ModelConfig,
-    
-    /// Channel configurations
-    pub channels: ChannelConfig,
-}
 
-impl Default for Config {
-    fn default() -> Self {
-        Self {
-            gateway: GatewayConfig::default(),
-            models: ModelConfig::default(),
-            channels: ChannelConfig::default(),
-        }
-    }
+    /// Model configuration
+    #[serde(default)]
+    pub models: ModelConfig,
+
+    /// Channel configurations
+    #[serde(default)]
+    pub channels: ChannelConfig,
 }
 
 /// Gateway configuration
@@ -30,13 +23,13 @@ impl Default for Config {
 pub struct GatewayConfig {
     /// Gateway host
     pub host: String,
-    
+
     /// Gateway port
     pub port: u16,
-    
+
     /// Gateway mode (local, remote)
     pub mode: String,
-    
+
     /// Enable verbose logging
     pub verbose: bool,
 }
@@ -57,10 +50,10 @@ impl Default for GatewayConfig {
 pub struct ModelConfig {
     /// Primary model provider
     pub provider: String,
-    
+
     /// Model name
     pub model: String,
-    
+
     /// API key (optional, can use OAuth)
     pub api_key: Option<String>,
 }
@@ -76,30 +69,23 @@ impl Default for ModelConfig {
 }
 
 /// Channel configuration
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct ChannelConfig {
     /// WhatsApp enabled
+    #[serde(default)]
     pub whatsapp: bool,
-    
-    /// Telegram enabled
-    pub telegram: bool,
-    
-    /// Discord enabled
-    pub discord: bool,
-    
-    /// Slack enabled
-    pub slack: bool,
-}
 
-impl Default for ChannelConfig {
-    fn default() -> Self {
-        Self {
-            whatsapp: false,
-            telegram: false,
-            discord: false,
-            slack: false,
-        }
-    }
+    /// Telegram enabled
+    #[serde(default)]
+    pub telegram: bool,
+
+    /// Discord enabled
+    #[serde(default)]
+    pub discord: bool,
+
+    /// Slack enabled
+    #[serde(default)]
+    pub slack: bool,
 }
 
 impl Config {

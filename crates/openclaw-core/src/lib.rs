@@ -2,7 +2,6 @@
 ///
 /// This crate provides the foundational types, traits, and utilities
 /// used across the OpenClaw ecosystem.
-
 pub mod config;
 pub mod error;
 pub mod types;

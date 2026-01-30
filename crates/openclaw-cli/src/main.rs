@@ -59,11 +59,7 @@ async fn main() -> Result<()> {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::Gateway {
-            host,
-            port,
-            verbose,
-        } => {
+        Commands::Gateway { host, port, verbose } => {
             init_tracing(verbose);
             info!("Starting OpenClaw gateway on {}:{}", host, port);
             openclaw_gateway::run(host, port).await?;
@@ -94,14 +90,7 @@ async fn main() -> Result<()> {
 }
 
 fn init_tracing(verbose: bool) {
-    let level = if verbose {
-        tracing::Level::DEBUG
-    } else {
-        tracing::Level::INFO
-    };
+    let level = if verbose { tracing::Level::DEBUG } else { tracing::Level::INFO };
 
-    tracing_subscriber::fmt()
-        .with_max_level(level)
-        .with_target(false)
-        .init();
+    tracing_subscriber::fmt().with_max_level(level).with_target(false).init();
 }
