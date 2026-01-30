@@ -1,0 +1,24 @@
+[package]
+name = "openclaw-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "openclaw"
+path = "src/main.rs"
+
+[dependencies]
+openclaw-core = { path = "../openclaw-core" }
+openclaw-gateway = { path = "../openclaw-gateway" }
+
+tokio.workspace = true
+anyhow.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
